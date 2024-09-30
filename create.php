@@ -1,10 +1,6 @@
 <?php
 include 'db.php';
 
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
-
 if (isset($_POST['create'])) {
     $titulo_notas = $_POST['titulo_notas'];
     $categoria_notas = $_POST['categorias_notas'];
