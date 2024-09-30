@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli('localhost', 'root', 'root', 'crud_bloco_de_notas_gaucho_carlos');
+include 'db.php';
 
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
@@ -8,9 +8,8 @@ if ($conn->connect_error) {
 if (isset($_POST['create'])) {
     $titulo_notas = $_POST['titulo_notas'];
     $categoria_notas = $_POST['categorias_notas'];
-    $data_notas = $_POST['data_notas'];
     $conteudo_notas = $_POST['conteudo_notas'];
-    $sql = "INSERT INTO notas (titulo_notas, categorias_notas, data_notas, conteudo_notas) VALUES ('$titulo_notas', '$categoria_notas', '$data_notas', '$conteudo_notas')";
+    $sql = "INSERT INTO notas (titulo_notas, categorias_notas, conteudo_notas) VALUES ('$titulo_notas', '$categoria_notas', '$conteudo_notas')";
     $conn->query($sql);
 }
 
@@ -35,9 +34,6 @@ $result = $conn->query($sql);
     <label for="categorias_notas">Categoria:</label>
     <input type="text" id="categorias_notas" name="categorias_notas" required><br><br>
 
-    <label for="data_notas">Data:</label>
-    <input type="date" id="data_notas" name="data_notas" required><br><br>
-
     <label for="conteudo_notas">Conteúdo:</label><br>
     <textarea id="conteudo_notas" name="conteudo_notas" rows="5" required></textarea><br><br>
 
@@ -50,7 +46,6 @@ $result = $conn->query($sql);
         <tr>
             <th>Título</th>
             <th>Categoria</th>
-            <th>Data</th>
             <th>Conteúdo</th>
             <th>Ações</th>
         </tr>
@@ -61,7 +56,6 @@ $result = $conn->query($sql);
                 <tr>
                     <td><?php echo htmlspecialchars($row['titulo_notas']); ?></td>
                     <td><?php echo htmlspecialchars($row['categorias_notas']); ?></td>
-                    <td><?php echo htmlspecialchars($row['data_notas']); ?></td>
                     <td><?php echo htmlspecialchars($row['conteudo_notas']); ?></td>
                     <td>
                         <form method="POST" action="edit.php">
