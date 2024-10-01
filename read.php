@@ -13,10 +13,6 @@
         <table class="table">
             <thread class="thead-dark">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Título</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Data</th>
                 </tr>
             </thread>
             <tbody>
@@ -27,21 +23,27 @@
             if ($result -> num_rows > 0) {
                 while ($row = $result -> fetch_assoc()) {
                     echo "<tr>
+                    <th class='th_id' scope='col'>ID</th>
                     <th scope='row'> {$row['id_notas']} </th>
-                    <td>{$row['titulo_notas']}</td>
-                    <td>{$row['categorias_notas']}</td>
-                    <td>{$row['data_notas']}</td>
-                    </tr>
                     <tr>
-                    <th>Conteúdo</th>
-                    </tr>
-                    <td>{$row['conteudo_notas']}</td>
+                    <th scope='col'>Título</th>
+                    <td>{$row['titulo_notas']}</td>
+                    <tr>
+                    <th scope='col'>Categoria</th>
+                    <td>{$row['categorias_notas']}</td>
+                    <tr>
+                    <th scope='col'>Data</th>
+                    <td>{$row['data_notas']}</td>
+                    <tr>
+                    <th scope='col'>Conteúdo</th>
+                    <td class='td_conteudo'>{$row['conteudo_notas']}</td>
                     <td>
                     <a href='update.php?id={$row['id_notas']}'>Editar</a> |
                     <a href='delete.php?id={$row['id_notas']}'>Excluir</a>
                     <br> <br>
                     </td>
-                    </tr>";
+                    </tr>
+                    <br>";
                 }
             } else {
             echo "Nenhum registro encontrado";

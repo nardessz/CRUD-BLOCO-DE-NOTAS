@@ -27,15 +27,16 @@ $result = $conn->query($sql);
 <form method="POST">
     <label for="titulo_notas">Título:</label>
     <input type="text" id="titulo_notas" name="titulo_notas" required><br><br>
-
     <label for="categorias_notas">Categoria:</label>
     <input type="text" id="categorias_notas" name="categorias_notas" required><br><br>
-
     <label for="conteudo_notas">Conteúdo:</label><br>
     <textarea id="conteudo_notas" name="conteudo_notas" rows="5" required></textarea><br><br>
-
-    <button class="botao" type="submit" name="create">Adicionar Nota</button>
+    <div class="container_botao">
+        <button class="botao" type="submit" name="create">Adicionar Nota</button>
+    </div>
 </form>
 
 <br>
-<a class="botao" href="read.php">Voltar para o read</a>
+<div class="container_botao">
+    <a class="botao" href="read.php">Voltar para o read</a>
+</div>
